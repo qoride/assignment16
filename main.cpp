@@ -1,10 +1,9 @@
 #include <iostream>
-#include "grades.h"
+#include "compare.h"
 
 using namespace std;
 
-int main(){ //test statement for now
-    student s = newStudent();
-    cout << s.name;
+int main(){
+    
     return 0;
 }
