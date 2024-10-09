@@ -1,27 +1,11 @@
 #include "student.h"
 
-using namespace std;
+using namespace students;
 
-int averageGrade(vector<student> classRoom){
-    int total = 0;
-    for(int i = 0; i < classRoom.size(); i++){
-        total += classRoom.at(i).grade;
-    }
-    return total/classRoom.size();
-}
+namespace grades{
+    int averageGrade(vector<student> classRoom);
 
-student lowestGrade(vector<student> classRoom){
-    student lowest = classRoom.at(0);
-    for(int i = 1; i < classRoom.size(); i++){
-        if(classRoom.at(i).grade < lowest.grade)lowest = classRoom.at(i);
-    }
-    return lowest;
-}
+    student lowestGrade(vector<student> classRoom);
 
-student highestGrade(vector<student> classRoom){
-    student highest = classRoom.at(0);
-    for(int i = 1; i < classRoom.size(); i++){
-        if(classRoom.at(i).grade > highest.grade)highest = classRoom.at(i);
-    }
-    return highest;
+    student highestGrade(vector<student> classRoom);
 }
