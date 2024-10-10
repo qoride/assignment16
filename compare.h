@@ -1,13 +1,14 @@
 #include <iostream>
+#include <vector>
+#include <string>
 #include <cmath>
-#include "grades.h"
 
-using namespace grades;
+using namespace std;
 
 namespace compare{
-    void printStudent(student s);
+    void printStudent(string studentName, int grade);
 
-    void aboveAverage(vector<student> classRoom);
+    void aboveAverage(vector<string> students, vector<int> grades, int average);
 
-    void compareStudents(student student1, student student2);
+    void compareStudents(string student1, int grade1, string student2, int grade2);
 }

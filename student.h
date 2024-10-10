@@ -4,12 +4,9 @@
 using namespace std;
 
 namespace students{
-    struct student{
-        string name;
-        int grade;
-    };
+    int findStudent(string studentName, vector<string> classroom);
 
-    struct student newStudent(string studentName = "John Doe", int studentGrade = 0);
+    void removeStudent(int index, vector<string> &classroom, vector<int> &grades);
 
-    student findStudent(string studentName, vector<student> classRoom);
+    void changeGrade(int index, int newGrade, vector<int> &grades);
 }

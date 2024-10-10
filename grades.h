@@ -1,11 +1,12 @@
-#include "student.h"
+#include <vector>
+#include <string>
 
-using namespace students;
+using namespace std;
 
-namespace grades{
-    int averageGrade(vector<student> classRoom);
+namespace grading{
+    int averageGrade(vector<int> grades);
 
-    student lowestGrade(vector<student> classRoom);
+    int lowestGrade(vector<string> classroom, vector<int> grades);
 
-    student highestGrade(vector<student> classRoom);
+    int highestGrade(vector<string> classroom, vector<int> grades);
 }

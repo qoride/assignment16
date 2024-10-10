@@ -4,22 +4,23 @@
 using namespace std;
 
 namespace students{
-    struct student{
-        string name;
-        int grade;
-    };
-
-    struct student newStudent(string studentName = "John Doe", int studentGrade = 0){
-        struct student newStudent;
-        newStudent.name = studentName;
-        newStudent.grade = studentGrade;
-        return newStudent;
+    int findStudent(string studentName, vector<string> classroom){
+        for(int i = 0; i < classroom.size(); i++){
+            if(classroom.at(i) == studentName)return i;
+        }
+        return -1;
     }
 
-    student findStudent(string studentName, vector<student> classRoom){
-        for(int i = 0; i < classRoom.size(); i++){
-            if(classRoom.at(i).name == studentName)return classRoom.at(i);
+    void removeStudent(int index, vector<string> &classroom, vector<int> &grades){
+        if(index != -1){
+            classroom.erase(classroom.begin()+index);
+            grades.erase(grades.begin()+index);
         }
-        return newStudent("Not Found");
+    }
+
+    void changeGrade(int index, int newGrade, vector<int> &grades){
+        if(index != -1){
+            grades.at(index) = newGrade;
+        }
     }
 }

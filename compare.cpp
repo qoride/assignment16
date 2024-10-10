@@ -1,30 +1,30 @@
 #include <iostream>
+#include <vector>
+#include <string>
 #include <cmath>
-#include "grades.h"
 
-using namespace grades;
+using namespace std;
 
 namespace compare{
-    void printStudent(student s){
-        cout << "\nStudent: " << s.name
-        << "\nGrade: " << s.grade << endl;
+    void printStudent(string studentName, int grade){
+        cout << "\nStudent: " << studentName
+        << "\nGrade: " << grade << endl;
     }
 
-    void aboveAverage(vector<student> classRoom){
-        int average = averageGrade(classRoom);
-        for(int i = 0; i < classRoom.size(); i++){
-            if(classRoom.at(i).grade > average){
-                printStudent(classRoom.at(i));
+    void aboveAverage(vector<string> students, vector<int> grades, int average){
+        for(int i = 0; i < students.size(); i++){
+            if(grades.at(i) > average){
+                printStudent(students.at(i),grades.at(i));
             }
         }
     }
 
-    void compareStudents(student student1, student student2){
-        printStudent(student1);
-        printStudent(student2);
+    void compareStudents(string student1, int grade1, string student2, int grade2){
+        printStudent(student1,grade1);
+        printStudent(student2,grade2);
 
-        bool higher = (student1.grade > student2.grade)?true:false;
-        cout << student1.name << "has a " << ((higher)?"higher":"lower") << " grade than " << student2.name
-        << " by a margin of " << abs(student1.grade - student2.grade) << "." << endl;
+        bool higher = (grade1 > grade2)?true:false;
+        cout << student1 << "has a " << ((higher)?"higher":"lower") << " grade than " << student2
+        << " by a margin of " << abs(grade1 - grade2) << "." << endl;
     }
 }

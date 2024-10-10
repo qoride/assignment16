@@ -1,15 +1,21 @@
 #include <iostream>
 #include <limits>
+#include "student.h"
+#include "grades.h"
 #include "compare.h"
 
+using namespace std;
+using namespace students;
+using namespace grading;
 using namespace compare;
 
 void clearStream();
 
 int main(){
-    vector<student> classroom;
-    string input, msg = "";
-    int inputValue;
+    vector<string> students;
+    vector<int> grades;
+    string input = "", msg = "";
+    int inputValue, index;
 
     while(input != "stop"){
         cout << "\nMAIN MENU" << endl
@@ -37,21 +43,22 @@ int main(){
                 clearStream();
             }
 
-            classroom.push_back(newStudent(input,inputValue));
+            if(inputValue > 100)inputValue = 100;
+            if(inputValue < 0)inputValue = 0;
+
+            students.push_back(input);
+            grades.push_back(inputValue);
+
             msg = "\n" + input + " was added with a grade of " + to_string(inputValue);
 
         }else if(input == "remove"){
             clearStream();
             cout << "\nEnter student name: ";
             getline(cin, input);
-            if(findStudent(input,classroom).name != "Not Found"){
+            index = findStudent(input,students);
+            if(index != -1){
                 msg = "\nRemoved " + input + " from classroom.";
-                for(int i = 0; i < classroom.size(); i++){
-                    if(input == classroom.at(i).name){
-                        classroom.erase(classroom.begin()+i);
-                    }
-                    break;
-                }
+                removeStudent(index,students,grades);
             }else{
                 msg = "\nERROR: student " + input + " not found";
             }
