@@ -1,13 +1,9 @@
 #include <iostream>
 #include <limits>
-#include "student.h"
 #include "grades.h"
-#include "compare.h"
 
 using namespace std;
-using namespace students;
 using namespace grading;
-using namespace compare;
 
 void clearStream();
 
@@ -62,8 +58,33 @@ int main(){
             }else{
                 msg = "\nERROR: student " + input + " not found";
             }
-        }else if(input == "change"){
 
+        }else if(input == "change"){
+            clearStream();
+            cout << "\nEnter student name: ";
+            getline(cin, input);
+            index = findStudent(input,students);
+            if(index != -1){
+                cout << "\nEnter grade (0-100): ";
+                while(!(cin >> inputValue)){
+                    cout << "\nERROR: wrong value, try again: ";
+                    clearStream();
+                }
+
+                if(inputValue > 100)inputValue = 100;
+                if(inputValue < 0)inputValue = 0;
+
+                changeGrade(index,inputValue,grades);
+
+                msg = "\n" + input + " had their grade changed to " + to_string(inputValue);
+            }else{
+                msg = "\nERROR: student " + input + " not found";
+            }
+
+        }else if(input == "show"){
+            for(int i = 0; i < students.size(); i++){
+                printStudent(students.at(i), students, grades);
+            }
         }else if(input == "average"){
 
         }else if(input == "highest"){
